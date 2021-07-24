@@ -9,10 +9,14 @@ public abstract class GameObject {
     //x and y velocity of the object
     protected float velX = 0, velY = 0;
 
+    //the ID of the GameObject
+    protected ID id;
+
     //the constructor
-    public GameObject(int x, int y){
+    public GameObject(int x, int y, ID id){
         this.x = x;
         this.y = y;
+        this.id = id;
     }
 
     //abstract methods (each object that inherits this abstract class must implement these)
@@ -51,6 +55,14 @@ public abstract class GameObject {
 
     public void setVelY(float velY) {
         this.velY = velY;
+    }
+
+    public ID getID() {
+        return id;
+    }
+
+    public void setID(ID id) {
+        this.id = id;
     }
 
     
