@@ -8,6 +8,7 @@ public class Game extends Canvas implements Runnable {
     //private data
     private boolean isRunning = false;
     private Thread thread;
+    private Handler handler;
 
     //the start method, which starts a thread
     private void start(){
@@ -31,6 +32,8 @@ public class Game extends Canvas implements Runnable {
     public Game(){
         new Window(800, 800, "Survival Game", this);
         start();
+        handler = new Handler();
+        handler.addObject(new Box(100, 100));
     }
 
     //the run method, which houses the game loop
@@ -62,8 +65,9 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
+    //calls the tick method of each GameObject
     public void tick(){
-
+        handler.tick();
     }
 
     public void render(){
@@ -80,6 +84,9 @@ public class Game extends Canvas implements Runnable {
 
         g.setColor(Color.red);
         g.fillRect(0, 0, 500, 500);
+
+        //render all the objects
+        handler.render(g);
 
         //Draw things above here!
         ///////////////////////////
