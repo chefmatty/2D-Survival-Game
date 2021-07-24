@@ -36,6 +36,7 @@ public class Game extends Canvas implements Runnable {
         this.addKeyListener(new KeyInput(handler));
 
         handler.addObject(new Player(100, 100, ID.Player, handler));
+        handler.addObject(new Bear(600, 600, ID.Bear, handler.object.get(0)));
     }
 
     //the run method, which houses the game loop
@@ -85,8 +86,8 @@ public class Game extends Canvas implements Runnable {
         ///////////////////////////
         //Draw things below here!
 
-        g.setColor(Color.red);
-        g.fillRect(0, 0, 500, 500);
+        g.setColor(Color.white);
+        g.fillRect(0, 0, 800, 800);
 
         //render all the objects
         handler.render(g);
