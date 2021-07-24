@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Color;
 
+//a test class that creates a box GameObject
 public class Box extends GameObject {
 
     public Box(int x, int y) {

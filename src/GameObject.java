@@ -9,6 +9,7 @@ public abstract class GameObject {
     //x and y velocity of the object
     protected float velX = 0, velY = 0;
 
+    //the constructor
     public GameObject(int x, int y){
         this.x = x;
         this.y = y;

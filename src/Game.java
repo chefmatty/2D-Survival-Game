@@ -65,11 +65,12 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
-    //calls the tick method of each GameObject
+    //tick calls the tick method of each GameObject
     public void tick(){
         handler.tick();
     }
 
+    //render places items onto the screen
     public void render(){
         //this block is pre-loading 2 frames in
         BufferStrategy bs = this.getBufferStrategy();
