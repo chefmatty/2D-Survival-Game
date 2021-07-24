@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 
 public class Handler {
-    
+
+    //private data for key presses
+    private boolean up = false, down = false, left = false, right = false;
+
     //ArrayList of all the GameObjects
     ArrayList<GameObject> object = new ArrayList<GameObject>();
 
@@ -30,5 +33,38 @@ public class Handler {
     //removeObject removes a GameObject from the ArrayList
     public void removeObject(GameObject temp){
         object.remove(temp);
+    }
+
+    //getters and setters for key presses
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
     }
 }
