@@ -1,5 +1,6 @@
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.image.BufferStrategy;
 
@@ -9,6 +10,7 @@ public class Game extends Canvas implements Runnable {
     private boolean isRunning = false;
     private Thread thread;
     private Handler handler;
+    private Camera camera;
 
     //the start method, which starts a thread
     private void start(){
@@ -33,6 +35,7 @@ public class Game extends Canvas implements Runnable {
         new Window(800, 800, "Survival Game", this);
         start();
         handler = new Handler();
+        camera = new Camera(0,0);
         this.addKeyListener(new KeyInput(handler));
 
         handler.addObject(new Player(100, 100, ID.Player, handler));
@@ -71,6 +74,7 @@ public class Game extends Canvas implements Runnable {
 
     //tick calls the tick method of each GameObject
     public void tick(){
+        camera.tick(handler.object.get(0));
         handler.tick();
     }
 
@@ -84,15 +88,20 @@ public class Game extends Canvas implements Runnable {
         }
 
         Graphics g = bs.getDrawGraphics();
+        Graphics2D g2d = (Graphics2D) g;
         ///////////////////////////
         //Draw things below here!
-
         g.setColor(Color.white);
         g.fillRect(0, 0, 800, 800);
 
+        g2d.translate(-camera.getX(), -camera.getY());
+
+        g.setColor(Color.gray);
+        g.fillRect(0, 0, 500, 500);
         //render all the objects
         handler.render(g);
 
+        g2d.translate(camera.getX(), camera.getY());
         //Draw things above here!
         ///////////////////////////
         g.dispose();
