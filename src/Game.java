@@ -37,6 +37,7 @@ public class Game extends Canvas implements Runnable {
 
         handler.addObject(new Player(100, 100, ID.Player, handler));
         handler.addObject(new Bear(600, 600, ID.Bear, handler.object.get(0)));
+        handler.addObject(new Deer(400, 400, ID.Deer, handler.object.get(0)));
     }
 
     //the run method, which houses the game loop
