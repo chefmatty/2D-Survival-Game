@@ -41,9 +41,10 @@ public class Game extends Canvas implements Runnable {
 
         //create the map
         map = new Map(handler);
-        map.generateWorld();
+        map.generateMap();
+        map.drawWorld();
 
-        
+
         Player player = new Player(100, 100, ID.Player, handler);
         handler.addObject(player);
         handler.addObject(new Bear(600, 600, ID.Bear, player));

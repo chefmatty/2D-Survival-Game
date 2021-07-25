@@ -18,15 +18,15 @@ public class Tile extends GameObject {
     public void render(Graphics g) {
         if(type == 0){
             g.setColor(Color.green);
-            g.fillRect(x, y, 32, 32);
+            g.fillRect(x, y, 4, 4);
         }
         else if(type == 1){
             g.setColor(Color.yellow);
-            g.fillRect(x, y, 32, 32);
+            g.fillRect(x, y, 4, 4);
         }
         else if(type == 2){
             g.setColor(Color.blue);
-            g.fillRect(x, y, 32, 32);
+            g.fillRect(x, y, 4, 4);
         }
     }
 
