@@ -11,6 +11,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private Handler handler;
     private Camera camera;
+    private int[][] tileArray;
 
     //the start method, which starts a thread
     private void start(){
@@ -36,11 +37,18 @@ public class Game extends Canvas implements Runnable {
         start();
         handler = new Handler();
         camera = new Camera(0,0);
+        tileArray = new int[][]{{0, 0, 0, 0, 0}, 
+                                {0, 1, 1, 1, 0},
+                                {0, 1, 2, 1, 0},
+                                {0, 1, 1, 1, 0},
+                                {0, 0, 0, 0, 0}};
         this.addKeyListener(new KeyInput(handler));
 
-        handler.addObject(new Player(100, 100, ID.Player, handler));
-        handler.addObject(new Bear(600, 600, ID.Bear, handler.object.get(0)));
-        handler.addObject(new Deer(400, 400, ID.Deer, handler.object.get(0)));
+        generateWorld();
+        Player player = new Player(100, 100, ID.Player, handler);
+        handler.addObject(player);
+        handler.addObject(new Bear(600, 600, ID.Bear, player));
+        handler.addObject(new Deer(400, 400, ID.Deer, player));
     }
 
     //the run method, which houses the game loop
@@ -106,6 +114,20 @@ public class Game extends Canvas implements Runnable {
         ///////////////////////////
         g.dispose();
         bs.show();
+    }
+
+    //generates the world based on the given tileArray
+    public void generateWorld(){
+        int tileX = 0;
+        int tileY = 0;
+        for(int i = 0; i < tileArray.length; i++){
+            tileX = i*32;
+            for(int z = 0; z < tileArray[0].length; z++){
+                tileY = z*32;
+                Tile newTile = new Tile(tileX, tileY, ID.Tile, tileArray[i][z]);
+                handler.object.add(newTile);
+            }
+        }
     }
 
     //the main method

@@ -3,4 +3,5 @@ public enum ID {
     Player(),
     Bear(),
     Deer(),
+    Tile(),
 }

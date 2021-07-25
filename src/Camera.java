@@ -20,7 +20,6 @@ public class Camera {
         if(y <= 0) y = 0;
         if(y >= 800) y = 800;
 
-
     }
 
     //getters and setters
