@@ -29,9 +29,9 @@ public class Map {
         int tileX = 0;
         int tileY = 0;
         for(int i = 0; i < tileArray.length; i++){
-            tileX = i*4;
+            tileX = i*32;
             for(int z = 0; z < tileArray[0].length; z++){
-                tileY = z*4;
+                tileY = z*32;
                 Tile newTile = new Tile(tileX, tileY, ID.Tile, tileArray[i][z]);
                 handler.object.add(newTile);
             }

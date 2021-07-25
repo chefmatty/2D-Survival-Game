@@ -12,6 +12,7 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private Camera camera;
     private Map map;
+    private Player player;
 
     //the start method, which starts a thread
     private void start(){
@@ -34,7 +35,6 @@ public class Game extends Canvas implements Runnable {
     //the constructor for the Game object
     public Game(){
         new Window(800, 800, "Survival Game", this);
-        start();
         handler = new Handler();
         camera = new Camera(0,0);
         this.addKeyListener(new KeyInput(handler));
@@ -44,11 +44,12 @@ public class Game extends Canvas implements Runnable {
         map.generateMap();
         map.drawWorld();
 
-
-        Player player = new Player(100, 100, ID.Player, handler);
+        player = new Player(100, 100, ID.Player, handler);
         handler.addObject(player);
         handler.addObject(new Bear(600, 600, ID.Bear, player));
         handler.addObject(new Deer(400, 400, ID.Deer, player));
+
+        start();
     }
 
     //the run method, which houses the game loop
@@ -82,7 +83,7 @@ public class Game extends Canvas implements Runnable {
 
     //tick calls the tick method of each GameObject
     public void tick(){
-        camera.tick(handler.object.get(0));
+        camera.tick(player);
         handler.tick();
     }
 
@@ -109,7 +110,7 @@ public class Game extends Canvas implements Runnable {
         //render all the objects
         handler.render(g);
 
-        g2d.translate(camera.getX(), camera.getY());
+        //g2d.translate(camera.getX(), camera.getY());
         //Draw things above here!
         ///////////////////////////
         g.dispose();
