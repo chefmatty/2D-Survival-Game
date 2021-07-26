@@ -28,6 +28,8 @@ public class Player extends GameObject {
 
         if(handler.isRight()) velX = 5;
         else if(!handler.isLeft()) velX = 0;
+
+        //will also have to handle other button presses here, like inventory, attack, etc...
         
     }
 

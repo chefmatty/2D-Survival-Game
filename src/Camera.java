@@ -16,9 +16,9 @@ public class Camera {
         y+= ((object.getY() - y - 800/2));
 
         if(x <= 0) x = 0;
-        if(x >= 6400) x = 6400;
+        if(x >= 5600) x = 5600;
         if(y <= 0) y = 0;
-        if(y >= 6400) y = 6400;
+        if(y >= 5600) y = 5600;
 
     }
 

@@ -17,8 +17,8 @@ public class Map {
             for(int y = 0; y < tileArray[0].length; y++){
                 double coord = Noise.noise(x+0.5, y+0.5);
                 //System.out.println(coord);
-                if(coord > -0.3) tileArray[x][y] = 0;
-                else if(coord > -0.6) tileArray[x][y] = 1;
+                if(coord > 0) tileArray[x][y] = 0;
+                else if(coord > -0.3) tileArray[x][y] = 1;
                 else tileArray[x][y] = 2;
             }
         }
